@@ -7,7 +7,8 @@ Aplikacja Angular pisana przez AI. Człowiek pełni rolę recenzenta: przegląda
 - Angular 22 (standalone, zoneless — w projekcie nie ma `zone.js`)
 - TypeScript 6 (tryb strict jest domyślny)
 - SCSS
-- Testy: Vitest + jsdom przez builder `@angular/build:unit-test`
+- Testy jednostkowe: Vitest + jsdom przez builder `@angular/build:unit-test`
+- Testy e2e: Playwright (Chromium), testy w `e2e/`, konfiguracja w `playwright.config.ts`
 - Formatowanie: Prettier (`.prettierrc`: `printWidth: 100`, `singleQuote: true`)
 - Node 24 (`.nvmrc`) — Angular 22 nie działa na Node 20
 
@@ -17,7 +18,9 @@ Przed komendami w nowym terminalu: `nvm use`.
 
 - `npm start` — serwer deweloperski, http://localhost:4200
 - `npm run build` — build produkcyjny do `dist/ai-native`
-- `npx ng test --watch=false` — testy jednorazowo (bez trybu watch)
+- `npx ng test --watch=false` — testy jednostkowe jednorazowo (bez trybu watch)
+- `npm run e2e` — testy e2e w przeglądarce (sam uruchamia `ng serve` albo używa już działającego); raport: `npx playwright show-report`
+- `npx playwright install chromium` — jednorazowo po sklonowaniu repo (pobiera przeglądarkę)
 - `npx prettier --write <pliki>` — formatowanie
 - `npx ng generate component <ścieżka/nazwa>` — nowy komponent (używaj CLI zamiast tworzyć pliki ręcznie)
 
@@ -45,8 +48,9 @@ Przed komendami w nowym terminalu: `nvm use`.
 
 - Nigdy nie commituj bezpośrednio na `main`. Każde zadanie to osobny branch: `feat/<krótki-opis>`, `fix/<...>`, `chore/<...>`.
 - Jeden branch = jedna funkcja/poprawka. Małe, czytelne zmiany są łatwiejsze do review.
-- Przed oddaniem zmian do review muszą przejść: `npm run build` i `npx ng test --watch=false`. Nowy kod formatuj Prettierem.
-- Każda nowa funkcja ma testy (`*.spec.ts` obok pliku).
+- Przed oddaniem zmian do review muszą przejść: `npm run build`, `npx ng test --watch=false` i `npm run e2e`. Nowy kod formatuj Prettierem.
+- Każda nowa funkcja ma testy jednostkowe (`*.spec.ts` obok pliku).
+- Każda nowa strona / ścieżka użytkownika ma test e2e w `e2e/<feature>.spec.ts`. Elementy, których dotyka test, oznaczaj `data-testid` i szukaj ich przez `page.getByTestId()`.
 - Nie dodawaj nowych zależności npm bez zgody użytkownika — zapytaj i uzasadnij.
 - Nie zmieniaj konfiguracji (`angular.json`, `tsconfig*.json`, `package.json`) poza zakresem zadania.
 - Commity i kod (nazwy, komentarze) po angielsku; komunikacja z użytkownikiem po polsku.
