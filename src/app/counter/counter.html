@@ -1,0 +1,9 @@
+<section class="counter">
+  <h2>Counter</h2>
+  <p class="value" [class.negative]="isNegative()" data-testid="value">{{ count() }}</p>
+  <div class="actions">
+    <button type="button" (click)="decrement()" data-testid="decrement">−</button>
+    <button type="button" (click)="reset()" data-testid="reset">Reset</button>
+    <button type="button" (click)="increment()" data-testid="increment">+</button>
+  </div>
+</section>
