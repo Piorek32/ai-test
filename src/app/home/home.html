@@ -1,0 +1,23 @@
+<section class="hero" data-testid="hero">
+  <img class="hero-image" data-testid="hero-image" [src]="image.src" [alt]="image.alt" />
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1 class="hero-title" data-testid="hero-title" [attr.aria-label]="title">
+      @for (word of words; track $index) {
+        <span class="word" aria-hidden="true">
+          @for (item of word; track item.index) {
+            <span class="letter" [style.animation-delay.ms]="item.index * 70">{{
+              item.letter
+            }}</span>
+          }
+        </span>
+      }
+    </h1>
+    <p class="hero-subtitle" data-testid="hero-subtitle">{{ subtitle }}</p>
+  </div>
+
+  <a class="hero-credit" [href]="image.creditUrl" target="_blank" rel="noopener">{{
+    image.credit
+  }}</a>
+</section>
