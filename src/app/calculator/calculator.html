@@ -1,0 +1,21 @@
+<section class="calculator">
+  <h1 class="title">Calculator</h1>
+
+  <div class="device">
+    <output class="display" data-testid="display" aria-live="polite">{{ display() }}</output>
+
+    <div class="keypad">
+      @for (key of keys; track key.label) {
+        <button
+          type="button"
+          [class]="'key key-' + key.kind"
+          [class.active]="key.kind === 'operator' && operator() === key.label"
+          [attr.data-testid]="testId(key)"
+          (click)="press(key)"
+        >
+          {{ key.label }}
+        </button>
+      }
+    </div>
+  </div>
+</section>

@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home').then((m) => m.Home),
   },
   {
+    path: 'calculator',
+    loadComponent: () => import('./calculator/calculator').then((m) => m.Calculator),
+  },
+  {
     path: 'counter',
     loadComponent: () => import('./counter/counter').then((m) => m.Counter),
   },
