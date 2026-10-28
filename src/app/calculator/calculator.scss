@@ -22,81 +22,9 @@
 }
 
 .title {
-  margin: 0 0 2rem;
+  margin: 0;
   font-size: clamp(2rem, 6vw, 3.5rem);
   font-weight: 900;
   letter-spacing: -0.03em;
   text-transform: uppercase;
-}
-
-.device {
-  width: min(100%, 22rem);
-  padding: 1.25rem;
-  border-radius: 1.5rem;
-  background: #17171b;
-  box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 0.5);
-}
-
-.display {
-  display: block;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  background: #000;
-  font-size: 2.5rem;
-  font-variant-numeric: tabular-nums;
-  text-align: right;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.keypad {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem;
-}
-
-.key {
-  height: 4rem;
-  border: 0;
-  border-radius: 1rem;
-  background: #2a2a30;
-  color: inherit;
-  font: inherit;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition:
-    background 0.15s ease,
-    transform 0.1s ease;
-
-  &:hover {
-    background: #3a3a42;
-  }
-
-  &:active {
-    transform: scale(0.94);
-  }
-}
-
-.key-operator,
-.key-equals {
-  background: #e63b2e;
-
-  &:hover,
-  &.active {
-    background: #ff5a4c;
-  }
-}
-
-.key-operator.active {
-  box-shadow: inset 0 0 0 3px #fff;
-}
-
-.key-clear {
-  grid-column: 1 / -1;
-  background: #5a5a63;
-
-  &:hover {
-    background: #6a6a74;
-  }
 }
