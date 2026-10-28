@@ -25,6 +25,7 @@ Zasady kodu są w `CLAUDE.md` — trzymaj się ich. Ten skill opisuje tylko kole
 - Nowe komponenty / serwisy generuj przez CLI, np. `npx ng generate component <feature>/<nazwa>` (pliki trafiają do `src/app/<feature>/`).
 - Nowa strona = nowa trasa w `src/app/app.routes.ts` z `loadComponent`.
 - Każda zmiana zachowania ma testy w `*.spec.ts` obok pliku. Testuj to, co widzi użytkownik (DOM), a nie prywatne szczegóły.
+- Nowa strona / ścieżka użytkownika ma test e2e w `e2e/<feature>.spec.ts` (Playwright): wejdź na URL, przeklikaj główny scenariusz, sprawdź wynik. Elementy oznaczaj `data-testid`.
 - Nie dodawaj zależności npm bez zgody użytkownika.
 
 ## 3. Weryfikacja
@@ -35,6 +36,7 @@ Najpierw `nvm use` (projekt wymaga Node 24), potem:
 npx prettier --write <zmienione pliki>
 npm run build
 npx ng test --watch=false
+npm run e2e -- --reporter=list
 ```
 
 Wszystko musi przejść. Jeśli coś pada — napraw, nie omijaj.
@@ -49,7 +51,7 @@ Wszystko musi przejść. Jeśli coś pada — napraw, nie omijaj.
    ```
    Opis PR zawiera:
    - **Summary** — co się zmieniło (punkty)
-   - **Test plan** — checklista: build, testy (z liczbą), oraz krok ręcznego sprawdzenia (jaki URL otworzyć, co kliknąć)
+   - **Test plan** — checklista: build, testy jednostkowe i e2e (z liczbą), oraz krok ręcznego sprawdzenia (jaki URL otworzyć, co kliknąć)
 
 ## 5. Raport dla użytkownika (po polsku)
 

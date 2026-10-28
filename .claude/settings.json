@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build)",
+      "Bash(npm run e2e:*)",
+      "Bash(npm start)",
+      "Bash(npx ng test:*)",
+      "Bash(npx ng generate:*)",
+      "Bash(npx prettier:*)",
+      "Bash(nvm use)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git checkout main)",
+      "Bash(git checkout -b:*)",
+      "Bash(git pull:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push -u origin:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr view:*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push origin main)",
+      "Bash(gh pr merge:*)",
+      "Bash(npm install:*)",
+      "Bash(npm i:*)"
+    ]
+  }
+}
