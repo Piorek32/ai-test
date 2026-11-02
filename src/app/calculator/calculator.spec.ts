@@ -10,6 +10,6 @@ describe('Calculator', () => {
     const fixture = TestBed.createComponent(Calculator);
     await fixture.whenStable();
     const element = fixture.nativeElement as HTMLElement;
-    expect(element.querySelector('h1')?.textContent?.trim()).toBe('Calculator');
+    expect(element.querySelector('h1')?.textContent?.trim()).toBe('Kalkulator');
   });
 });

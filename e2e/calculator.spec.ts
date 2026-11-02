@@ -7,7 +7,7 @@ test.describe('Calculator page', () => {
 
     await expect(page).toHaveURL(/\/calculator$/);
     await expect(page.getByTestId('calculator')).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Calculator' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Kalkulator' })).toBeVisible();
     await expect(page.getByTestId('nav-calculator')).toHaveAttribute('aria-current', 'page');
 
     await page.getByTestId('nav-home').click();
