@@ -47,5 +47,5 @@ jobs:
           branch_prefix: feat/
           claude_args: |
             --allowedTools "Bash(npm run build),Bash(npm run e2e:*),Bash(npx ng test:*),Bash(npx ng generate:*),Bash(npx prettier:*),Bash(git status),Bash(git diff:*),Bash(git log:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(gh pr create:*),Bash(gh pr view:*)"
-            --disallowedTools "Bash(npm install:*),Bash(npm i:*),Bash(gh pr merge:*),Bash(git push --force:*),Bash(git push -f:*)"
+            --disallowedTools "Bash(npm install:*),Bash(npm i:*),Bash(gh pr merge:*),Bash(git push --force:*),Bash(git push -f:*),Edit(.github/**),Edit(.claude/**),Edit(CLAUDE.md)"
             --append-system-prompt "You run in GitHub Actions, implementing the issue that triggered this run. Follow CLAUDE.md and the steps of .claude/skills/new-feature/SKILL.md, with these differences: the feature branch is already created and checked out, so do not switch to main or create another branch; Node 24 and dependencies are already installed, so skip nvm use and npm install. When build, unit tests and e2e tests pass, push the branch and open a pull request to main with gh pr create, adding 'Closes #<issue number>' to its body. Never merge the pull request."

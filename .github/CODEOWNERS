@@ -1,0 +1,4 @@
+# Files that define how the AI agent and CI work. Changes need the owner's review.
+/.github/ @Piorek32
+/.claude/ @Piorek32
+/CLAUDE.md @Piorek32
