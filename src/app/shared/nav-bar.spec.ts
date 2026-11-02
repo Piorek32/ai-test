@@ -29,6 +29,12 @@ describe('NavBar', () => {
     expect(link.getAttribute('href')).toBe('/calculator');
   });
 
+  it('links to the todos page', () => {
+    const link = element.querySelector('[data-testid="nav-todos"]')!;
+    expect(link.textContent?.trim()).toBe('Zadania');
+    expect(link.getAttribute('href')).toBe('/todos');
+  });
+
   it('links to the about page', () => {
     const link = element.querySelector('[data-testid="nav-about"]')!;
     expect(link.textContent?.trim()).toBe('O projekcie');
