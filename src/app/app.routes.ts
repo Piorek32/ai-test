@@ -14,6 +14,10 @@ export const routes: Routes = [
     loadComponent: () => import('./counter/counter').then((m) => m.Counter),
   },
   {
+    path: 'todos',
+    loadComponent: () => import('./todos/todos').then((m) => m.Todos),
+  },
+  {
     path: 'about',
     loadComponent: () => import('./about/about').then((m) => m.About),
   },
