@@ -11,7 +11,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class NavBar {
   protected readonly links = [
     { label: 'Home', path: '/', testId: 'nav-home' },
-    { label: 'Kalkulator', path: '/calculator', testId: 'nav-calculator' },
+    { label: 'Kkalkulator', path: '/calculator', testId: 'nav-calculator' },
     { label: 'Zadania', path: '/todos', testId: 'nav-todos' },
     { label: 'O projekcie', path: '/about', testId: 'nav-about' },
   ];
