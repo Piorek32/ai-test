@@ -28,4 +28,10 @@ describe('NavBar', () => {
     expect(link.textContent?.trim()).toBe('Calculator');
     expect(link.getAttribute('href')).toBe('/calculator');
   });
+
+  it('links to the about page', () => {
+    const link = element.querySelector('[data-testid="nav-about"]')!;
+    expect(link.textContent?.trim()).toBe('O projekcie');
+    expect(link.getAttribute('href')).toBe('/about');
+  });
 });

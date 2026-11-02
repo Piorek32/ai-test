@@ -12,5 +12,6 @@ export class NavBar {
   protected readonly links = [
     { label: 'Home', path: '/', testId: 'nav-home' },
     { label: 'Calculator', path: '/calculator', testId: 'nav-calculator' },
+    { label: 'O projekcie', path: '/about', testId: 'nav-about' },
   ];
 }
