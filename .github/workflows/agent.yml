@@ -1,0 +1,51 @@
+name: Claude agent
+
+on:
+  issues:
+    types: [labeled]
+
+concurrency:
+  group: agent-issue-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  id-token: write
+
+jobs:
+  implement:
+    name: Implement issue
+    if: github.event.label.name == 'agent-ready'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          label_trigger: agent-ready
+          branch_prefix: feat/
+          claude_args: |
+            --allowedTools "Bash(npm run build),Bash(npm run e2e:*),Bash(npx ng test:*),Bash(npx ng generate:*),Bash(npx prettier:*),Bash(git status),Bash(git diff:*),Bash(git log:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(gh pr create:*),Bash(gh pr view:*)"
+            --disallowedTools "Bash(npm install:*),Bash(npm i:*),Bash(gh pr merge:*),Bash(git push --force:*),Bash(git push -f:*)"
+            --append-system-prompt "You run in GitHub Actions, implementing the issue that triggered this run. Follow CLAUDE.md and the steps of .claude/skills/new-feature/SKILL.md, with these differences: the feature branch is already created and checked out, so do not switch to main or create another branch; Node 24 and dependencies are already installed, so skip nvm use and npm install. When build, unit tests and e2e tests pass, push the branch and open a pull request to main with gh pr create, adding 'Closes #<issue number>' to its body. Never merge the pull request."
