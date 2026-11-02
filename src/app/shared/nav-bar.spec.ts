@@ -25,7 +25,7 @@ describe('NavBar', () => {
 
   it('links to the calculator', () => {
     const link = element.querySelector('[data-testid="nav-calculator"]')!;
-    expect(link.textContent?.trim()).toBe('Kkalkulator');
+    expect(link.textContent?.trim()).toBe('Kalkulator');
     expect(link.getAttribute('href')).toBe('/calculator');
   });
 
