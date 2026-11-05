@@ -40,4 +40,10 @@ describe('NavBar', () => {
     expect(link.textContent?.trim()).toBe('O projekcie');
     expect(link.getAttribute('href')).toBe('/about');
   });
+
+  it('links to the red page', () => {
+    const link = element.querySelector('[data-testid="nav-red"]')!;
+    expect(link.textContent?.trim()).toBe('Czerwona');
+    expect(link.getAttribute('href')).toBe('/red');
+  });
 });
