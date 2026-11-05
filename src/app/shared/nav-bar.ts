@@ -14,5 +14,6 @@ export class NavBar {
     { label: 'Calculator', path: '/calculator', testId: 'nav-calculator' },
     { label: 'Zadania', path: '/todos', testId: 'nav-todos' },
     { label: 'O projekcie', path: '/about', testId: 'nav-about' },
+    { label: 'Czerwona', path: '/red', testId: 'nav-red' },
   ];
 }
